@@ -8,5 +8,5 @@
 トレーニングのモチベーションアップや初心者の後押し
 全ては理想の体を多くの人が手に入れるために！！
 
-＃＃＃ チャレンジ要素一覧
+#### チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1ru48sg11f0KuMk2_Zj9w_1zbufJqT-_MNRUvcXkAaAI/edit#gid=0
