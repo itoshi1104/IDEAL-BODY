@@ -16,7 +16,7 @@
 ### 主な利用シーン
 トレーニングしていて他の方がどんなトレーニングをしているか参考にしたい時や交流を通してモチベーション維持、向上したい時など
 
-## チャレンジ要素一覧
+## 機能一覧
 https://docs.google.com/spreadsheets/d/1ru48sg11f0KuMk2_Zj9w_1zbufJqT-_MNRUvcXkAaAI/edit#gid=0
 
 ## 開発環境
