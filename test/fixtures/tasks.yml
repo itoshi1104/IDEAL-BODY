@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyText
+  body: MyText
+  start_date: 2021-02-07 07:39:46
+  end_date: 2021-02-07 07:39:46
+
+two:
+  user_id: 1
+  title: MyText
+  body: MyText
+  start_date: 2021-02-07 07:39:46
+  end_date: 2021-02-07 07:39:46
