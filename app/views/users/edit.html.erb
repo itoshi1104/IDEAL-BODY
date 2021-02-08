@@ -1,0 +1,14 @@
+<div>My Page 編集</div>
+
+<%= form_with model:@user, local:true do |f| %>
+  <div><%= f.attachment_field :profile_image, class: "user_image" %></div>
+  <div><%= f.text_field :name %></div>
+  <div>
+  <%= f.radio_button :sex, :male %>
+  <%= f.label :sex, "男性" %>
+  <%= f.radio_button :sex, :female %>
+  <%= f.label :sex, "女性" %>
+  </div>
+  <div><%= f.text_area :introduction %></div>
+  <%= f.submit '保存' %>
+<% end %>

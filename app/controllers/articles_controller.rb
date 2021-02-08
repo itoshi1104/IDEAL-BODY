@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @article = Comment.new
+    @comment = Comment.new
   end
 
   def edit
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   def update
      @article = Article.find(params[:id])
     if@article.update(article_params)
-      redirect_to article_path
+      redirect_to article_path(@article)
     else
       render 'edit'
     end
@@ -48,8 +48,5 @@ private
   def article_params
     params.require(:article).permit(:title, :body,)
   end
-
-
-
 
 end
