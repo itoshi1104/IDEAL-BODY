@@ -4,12 +4,24 @@
   <thead>
     
   </thead>
+  <thead>
+     　<tr>
+        　<th>投稿者</th>
+        　<th>投稿日時</th>
+        　<th>タイトル</th>
+          <th>いいね数</th>
+          <th>コメント数</th>
+    　　</tr>
+  </thead>
   <tbody>
-     <tr>
-         <% @articles.each do |article| %>
-         <td><%= article.title %></td>
-         <td><%= article.body %></td>
-     </tr>
+     　<tr>
+         　<% @articles.each do |article| %>
+         　<td> <%= article.user.name %></td>
+         　<td> <%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+         　<td><%= article.title %></td>
+         　<td></td>
+         　<td></td>
+     　</tr>
      <% end %>
   </tbody>
 </table>

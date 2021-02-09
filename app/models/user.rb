@@ -10,6 +10,7 @@ class User < ApplicationRecord
   
   has_many :taks, dependent: :destroy
   
+  enum sex: { 男性: 0, 女性: 1}
   attachment :profile_image
   
   validates :name, presence: true, length: {maximum: 20, minimum: 2}

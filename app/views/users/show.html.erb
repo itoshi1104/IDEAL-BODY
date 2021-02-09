@@ -1,10 +1,13 @@
 <div></div>
-<div><%= %> <br><%= @user.name %>
+<div><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %><br>
+<%= @user.name %>
+<label><%= @user.sex %></label>
 </div>
 <div><%= @user.introduction %></div>
 
-<div></div>
-<div></div>
+<div><%= link_to "投稿", new_article_path %></div>
+<div><%= link_to "タスク" %></div>
+<div><%= link_to "編集", edit_user_path %></div>
 
 
 
@@ -15,7 +18,7 @@
   <tbody>
     <tr>
       <% @articles.each do |article| %>
-      <td><%= article.created_at %></td>
+      <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
       <td><%= article.title %></td>
       <td></td>
       <td></td>
