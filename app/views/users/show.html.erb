@@ -15,13 +15,23 @@
 <div>投稿一覧</div>
 
 <table class="table">
+  <thead>
+    <tr>
+        <th>投稿日時</th>
+        <th>タイトル</th>
+        <th>いいね数</th>
+        <th>コメント数</th>
+        <th><%=%></th>
+        <th><%=%></th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <% @articles.each do |article| %>
-      <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-      <td><%= article.title %></td>
-      <td></td>
-      <td></td>
+        <% @articles.each do |article| %>
+        <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to article.title, article_path(article) %></td>
+        <td></td>
+        <td></td>
     </tr>
     <% end %>
   </tbody>
