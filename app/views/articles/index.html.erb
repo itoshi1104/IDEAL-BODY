@@ -2,7 +2,7 @@
 
 <table class="table">
   <thead>
-    
+
   </thead>
   <thead>
      　<tr>
@@ -23,8 +23,8 @@
          　 </td>
          　<td> <%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
          　<td><%= link_to article.title, article_path(article) %></td>
-         　<td></td>
-         　<td></td>
+         　<td>d(￣ ￣)<%= article.favorites.count %></td>
+         　<td>💬<%= article.comments.count %></td>
      　</tr>
      <% end %>
   </tbody>

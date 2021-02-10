@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_action :correct_user, only: [:edit, :update]
+   before_action :correct_user, only: [:destroy]
   
     def create
       article = Article.find(params[:article_id])
@@ -13,6 +13,9 @@ class CommentsController < ApplicationController
     end
   
     def destroy
+      comment = Comment.find(params[:article_id])
+      comment.destroy
+		  redirect_back(fallback_location: root_path)
     end
     
     private
@@ -22,8 +25,8 @@ class CommentsController < ApplicationController
   	end
   	
     def correct_user
-      user = User.find(params[:id])
-      if current_user != user
+      comment = Comment.find(params[:article_id])
+      if current_user.id != comment.user_id
          redirect_to articles_path
       end
     end
