@@ -9,7 +9,25 @@
 <div><%= @article.title %></div>
 <div><%= @article.body %></div>
 <div><%=%></div>
-<div><%=%></div>
+<div>
+   <h6>コメントする</h6>
+   <div>
+     <%= form_with(model:[@article, @comment], local: true) do |f| %>
+     <%= f.text_area :body, placeholder: "コメントしよう！" %>
+     <%= f.submit "送信する" %>
+     <% end %>
+  </div>
+</div>
+
+
 
 <div>コメント一覧</div>
+<% @article.comments.each do |comment| %>
+
+<%= comment.user.name %>
+<%= comment.body %>
+<%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
+
+<% end %>
+
 
