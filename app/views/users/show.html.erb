@@ -4,11 +4,11 @@
 <label><%= @user.sex %></label>
 </div>
 <div><%= @user.introduction %></div>
-
+<% if @user.id == current_user.id %>
 <div><%= link_to "投稿", new_article_path %></div>
 <div><%= link_to "タスク" %></div>
 <div><%= link_to "編集", edit_user_path %></div>
-
+<% end %>
 
 
 
