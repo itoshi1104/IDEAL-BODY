@@ -20,7 +20,7 @@
         <%= link_to"my page",user_path(current_user.id) %>
       </li>
       <li>
-        <%= link_to%>
+        <%= render 'layouts/search'%>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -33,7 +33,7 @@
         <%= link_to"news!", articles_path %>
       </li>
       <li>
-        <%= link_to %>
+        <%= render 'layouts/search' %>
       </li>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>

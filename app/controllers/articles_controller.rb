@@ -42,13 +42,18 @@ class ArticlesController < ApplicationController
      redirect_to articles_path
   end
 
+   def search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).order(created_at: "DESC").includes(:user)
+  end
+
 
 private
 
   def article_params
     params.require(:article).permit(:title, :body,)
   end
-  
+
   def correct_user
     article = Article.find(params[:id])
     if current_user.id != article.user_id

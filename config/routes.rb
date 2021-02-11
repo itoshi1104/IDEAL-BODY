@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :tasks,only: [:index,:create,:destroy]
   end
   resources :articles  do
+    collection do
+       get :search
+    end
     resource :comments,only: [:create,:destroy]
     resource :favorites,only: [:create,:destroy]
   end
