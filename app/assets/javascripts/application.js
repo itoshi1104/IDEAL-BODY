@@ -13,4 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require moment
+//= require fullcalendar
 //= require_tree .
+
+// document.addEventListener('DOMContentLoaded',function(){
+//   // javascriptのcode
+// })
+
+
+// document.addEventListener('turbokinks:load',function(){
+
+// })
+

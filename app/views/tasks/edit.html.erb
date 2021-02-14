@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-xs-3">
+    <div class="col-xs-6">
+      <%= form_with model: @task, url: user_task_path(@task), local: true do |f| %>
+      <%= f.label :title, 'スケジュール名' %>
+      <br>
+      <%= f.text_field, class: 'form-control' %>
+      <br>
+      <%= f.label :start_date, '開始日時' %>
+      <br>
+      <%= f.datetime_salect :start_date, {}, class: 'form-control datetime-form' %>
+      <br>
+      <br>
+      <%= f.submit '保存', class: 'btn-primary btn-block' %>
+    </div>
+  </div>
+</div>
