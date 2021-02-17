@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require moment
 //= require fullcalendar
+//= require turbolinks
 //= require_tree .
 
 // document.addEventListener('DOMContentLoaded',function(){
