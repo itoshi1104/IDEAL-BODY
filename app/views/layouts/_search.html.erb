@@ -1,28 +1,20 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  検索
+<button type="button" data-toggle="modal" data-target="#exampleModal" style="background: none; border: none;">
+ <li class="fas fa-search"></li>
 </button>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">検索</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body">
-          <div class="searchbox">
-              <%= search_form_for @search, url: articles_path do |f| %>
-                <div><%= f.text_field :title_cont ,placeholder: '検索するテキストを入力...' %></div>
-                <div></div>
+    <div class="modal-content" style="padding: 50px 100px;">
+      <%= search_form_for @search, url: articles_path do |f| %>
+        <div class="row">
+          <div class="col text-center">
+            <%= f.text_field :title_cont ,placeholder: '検索するテキストを入力...' %>
+            <%= f.submit ("検索") , class: 'search-btn' %>
           </div>
-        </div>
-        <div class="modal-footer">
-          <div><%= f.submit ("検索") , class: 'btn btn-primary'%></div>
-        <% end %>
-        </div>
+          <div class="col"></div>
+      　</div>
+      <% end %>
     </div>
   </div>
 </div>
