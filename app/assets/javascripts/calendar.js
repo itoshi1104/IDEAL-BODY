@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load',function() {
   function eventCalendar() {
     return $('#calendar').fullCalendar({});
   }
@@ -6,7 +6,7 @@ $(function() {
   function clearCalendar() {
     $('#calendar').html('');
   }
-
+$(document).on('turbolinks:before-cache', clearCalendar);
   $('#calendar').fullCalendar({
     events: '/tasks.json',
 

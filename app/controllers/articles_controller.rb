@@ -42,10 +42,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
-  def search
-    # @search = Article.ransack(params[:q])
-    # @search_articles = @search.result(distinct: true)
-  end
+  # def search
+  #   # @search = Article.ransack(params[:q])
+  #   # @search_articles = @search.result(distinct: true)
+  # end
 
   private
 
