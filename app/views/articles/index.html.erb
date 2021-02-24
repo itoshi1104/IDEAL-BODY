@@ -1,11 +1,15 @@
-<div><strong>news</strong></div>
-
-<table class="table">
-  <thead>
-
-  </thead>
-  <thead>
-     　<tr>
+<div class="container">
+  <div class="row">
+    <div class="col mt-5 text-center">
+      <h5>
+        <strong>news!</strong>
+      </h5>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead class="table-warning">
+     　  <tr>
         　<th>投稿者</th>
         　<th>性別</th>
         　<th>投稿日時</th>
@@ -13,21 +17,33 @@
           <th>いいね数</th>
           <th>コメント数</th>
     　　</tr>
-  </thead>
-  <tbody>
-     　<tr>
-         　<% @search_articles.each do |article| %>
-         　 <td><%= link_to user_path(article.user) do %>
-               <%= attachment_image_tag article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %> <br>
-         　     <%= article.user.name %>
-         　     <% end %>
-         　 </td>
-         　 <td><%= article.user.sex %></td>
-         　<td> <%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-         　<td><%= link_to article.title, article_path(article) %></td>
-         　<td>d(￣ ￣)<%= article.favorites.count %></td>
-         　<td>💬<%= article.comments.count %></td>
-     　</tr>
-     <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+     　  <tr>
+        <% @search_articles.each do |article| %>
+       　  <td><%= link_to user_path(article.user) do %>
+             <%= attachment_image_tag article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %> <br>
+       　     <%= article.user.name %>
+       　     <% end %>
+       　  </td>
+       　  <td>
+       　    <%= article.user.sex %>
+       　  </td>
+       　  <td>
+       　    <%= article.created_at.strftime("%Y-%m-%d %H:%M") %>
+       　  </td>
+       　  <td>
+       　    <%= link_to article.title, article_path(article) %>
+       　  </td>
+       　  <td>
+       　    d(￣ ￣)<%= article.favorites.count %>
+       　  </td>
+       　  <td>
+       　    💬<%= article.comments.count %>
+       　  </td>
+     　  </tr>
+     　  <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

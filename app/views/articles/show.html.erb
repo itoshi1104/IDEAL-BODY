@@ -1,30 +1,18 @@
-  <div>
+<div class="container">
+  <div class="row mt-5">
      <%= link_to user_path(@article.user) do %>
-     <%= attachment_image_tag @article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %><br>
-     <%= @article.user.name %>
-     <%= @article.user.sex %>
+     <div class="col-3">
+       <%= attachment_image_tag @article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %>
+     </div>
+     <div class="col-5 ">
+       <%= @article.user.name %>
+       <%= @article.user.sex %>
+     </div>
      <% end %>
   </div>
-
-  <% if user_signed_in? && @article.user_id == current_user.id %>
-  <div>
-     <%= link_to "編集", edit_article_path(@article) %>
-  </div>
-  <div>
-     <%= link_to "削除", article_path(@article), method: :delete %>
-  </div>
-  <% end %>
-
-
-  <div>
-    <%= @article.title %>
-  </div>
-  <div>
-    <%= @article.body %>
-  </div>
-
-    <% if user_signed_in? %>
-    <div>
+  <div class="row mt-4">
+  <% if user_signed_in? %>
+    <div class="col">
       <% if @article.favorited_by?(current_user) %>
         <p>
           <%= link_to article_favorites_path(@article), method: :delete do %>
@@ -38,37 +26,64 @@
           <% end %>
         </p>
       <% end %>
-    </div>
-    <% end %>
-
-<div>
-  <% if user_signed_in? %>
-   <h6>コメントする</h6>
-     <div>
-       <%= form_with(model:[@article, @comment], local: true) do |f| %>
-       <%= f.text_area :body, placeholder: "コメントしよう！" %>
-       <%= f.submit "送信する" %>
-       <% end %>
+      <h6>コメントする</h6>
+      <%= form_with(model:[@article, @comment], local: true) do |f| %>
+        <%= f.text_area :body, placeholder: "コメントしよう！" %>
+        <%= f.submit "送信する" %>
+      <% end %>
     </div>
   <% end %>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-8">
+      <strong><%= @article.title %></strong>
+    </div>
+    <div class="col-md-8">
+      <%= @article.body %>
+    </div>
+    <div class="col-md-4">
+      <% if user_signed_in? && @article.user_id == current_user.id %>
+        <%= link_to "編集", edit_article_path(@article) %>
+        <%= link_to "削除", article_path(@article), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <h5>コメント一覧</h5>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>comment</th>
+          <th>time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @article.comments.each do |comment| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %><br>
+            <%= comment.user.name %>
+          </td>
+          <td>
+            <%= comment.body %>
+          </td>
+          <td>
+            <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </td>
+          <td>
+            <% if user_signed_in? && comment.user_id == current_user.id %>
+            <%= link_to '削除する', article_comments_path(comment), method: :delete %>
+            <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
-
-<div>コメント一覧</div>
-<% @article.comments.each do |comment| %>
-<div>
-    <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %><br>
-    <%= comment.user.name %>
-</div>
-<div>
-    <%= comment.body %>
-    <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
-</div>
-<% if user_signed_in? && comment.user_id == current_user.id %>
-<%= link_to '削除する', article_comments_path(comment), method: :delete %>
-<% end %>
-
-<% end %>
 
 
