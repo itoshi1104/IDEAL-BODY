@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
     article = Article.find(params[:article_id])
     favorite = Favorite.new(user_id: current_user.id, article_id: article.id)
     favorite.save
+    article.create_notification_favorite!(current_user)
     redirect_back(fallback_location: root_path)
   end
 

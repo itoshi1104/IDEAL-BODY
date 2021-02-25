@@ -1,19 +1,11 @@
 class Notification < ApplicationRecord
-  def change
-    create_table :notifications do |t|
-      t.integer :visitor_id, null: false
-      t.integer :visited_id, null: false
-      t.integer :article_id
-      t.integer :comment_id
-      t.string :action, default: '', null: false
-      t.boolean :checked, default: false, null: false
+  
+  default_scope -> { order(created_at: :desc) }
+  belongs_to :article, optional: true
+  belongs_to :comment, optional: true
 
-      t.timestamps
-    end
-
-    add_index :notifications, :visitor_id
-    add_index :notifications, :visited_id
-    add_index :notifications, :article_id
-    add_index :notifications, :comment_id
-  end
+  belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
+  belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
+  
 end
+  

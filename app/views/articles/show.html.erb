@@ -1,15 +1,13 @@
 <div class="container">
+  <%= link_to user_path(@article.user) do %>
   <div class="row mt-5">
-     <%= link_to user_path(@article.user) do %>
-     <div class="col-3">
-       <%= attachment_image_tag @article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %>
-     </div>
-     <div class="col-5 ">
-       <%= @article.user.name %>
-       <%= @article.user.sex %>
-     </div>
-     <% end %>
+    <div class="col">
+      <%= attachment_image_tag @article.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %>
+      <%= @article.user.name %>
+      <%= @article.user.sex %>
+    </div>
   </div>
+  <% end %>
   <div class="row mt-4">
   <% if user_signed_in? %>
     <div class="col">
@@ -48,7 +46,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row mt-3 justify-content-center">
+  <div class="row mt-5 justify-content-center">
     <h5>コメント一覧</h5>
   </div>
   <div class="row">

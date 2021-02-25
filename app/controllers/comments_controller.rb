@@ -3,11 +3,16 @@ class CommentsController < ApplicationController
 
   def create
     article = Article.find(params[:article_id])
-
     comment = Comment.new(comment_params)
     comment.article_id = article.id
     comment.user_id = current_user.id
-    redirect_back(fallback_location: root_path) if comment.save
+    @article = comment.article
+    if comment.save
+    @article.create_notification_comment!(current_user, comment.id)
+      redirect_back(fallback_location: root_path) 
+    else
+      render 'articles/show'
+    end
   end
 
   def destroy
