@@ -30,8 +30,8 @@
     </div>
   </div>
   <div class="row">
-    <%= @user.followings.count %>
-    <%= @user.followers.count %>
+    フォロー<%= @user.followings.count %>
+    フォロワー<%= @user.followers.count %>
   </div>
   <div class="row">
     <%= simple_format(@user.introduction) %>
