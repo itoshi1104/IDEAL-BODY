@@ -15,16 +15,34 @@
     <div class="col-sm-7">
       <% if user_signed_in? && @user.id == current_user.id %>
       <div>
-        <%= link_to "投稿", new_article_path %>
+        <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser1">
+          記事投稿
+    　　　</button>
+        <div class="modal fade" id="modaluser1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= render "articles/new", article: @article %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class>
+        <%= link_to "タスク", tasks_path, class: 'btn btn-outline-success w-25' %>
       </div>
       <div>
-        <%= link_to "タスク", tasks_path %>
+        <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser2">
+        　 編集
+  　　  　</button>
+        <div class="modal fade" id="modaluser2" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= render "users/edit", user: @user %>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
-        <%= link_to "編集", edit_user_path %>
-      </div>
-      <div>
-        <%= link_to "通知", notifications_path %>
+        <%= link_to "通知", notifications_path, class: 'btn btn-outline-success w-25' %>
       </div>
       <% end %>
     </div>
@@ -55,7 +73,7 @@
     投稿履歴
   </div>
   <table class="table mt-3">
-    <thead>
+    <thead class="table-warning">
       <tr>
           <th>投稿日時</th>
           <th>タイトル</th>
@@ -67,7 +85,7 @@
     </thead>
     <tbody>
       <tr>
-          <% @articles.each do |article| %>
+          <% @articles.order(created_at: :desc).each do |article| %>
           <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= link_to article.title, article_path(article) %></td>
           <td>d(￣ ￣)<%= article.favorites.count %></td>

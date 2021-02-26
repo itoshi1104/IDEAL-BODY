@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user,only: [:show,:edit,:update,:destroy]
-  
+
   def new
-    @task = Task.new
+
   end
 
   def create
-    @task = Task.new(task_params)
+  @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
       redirect_to tasks_path
@@ -18,6 +18,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.where(user_id: current_user.id)
+    @task = Task.new
   end
 
   def show
@@ -50,11 +51,11 @@ class TasksController < ApplicationController
   # end
 
   private
-  
+
   def task_params
     params.require(:task).permit(:user_id, :title, :body, :start_date, :end_date)
   end
-  
+
    def ensure_correct_user
       @task = Task.find(params[:id])
       if @task.user_id != current_user.id

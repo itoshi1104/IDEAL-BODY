@@ -28,7 +28,16 @@
                 <%= link_to"my page",user_path(current_user.id), class: 'nav-link' %>
               </li>
               <li class="navbar-item">
-                <%= render 'layouts/search', class: 'nav-link', class: 'nav-link'%>
+                <button type="button" data-toggle="modal" data-target="#serchModal" style="background: none; border: none;">
+                  <li class="fas fa-search"></li>
+                </button>
+                <div class="modal fade" id="serchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 50px 100px;">
+                      <%= render 'layouts/search', class: 'nav-link'%>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="navbar-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>

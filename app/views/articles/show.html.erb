@@ -24,11 +24,16 @@
           <% end %>
         </p>
       <% end %>
-      <h6>コメントする</h6>
-      <%= form_with(model:[@article, @comment], local: true) do |f| %>
-        <%= f.text_area :body, placeholder: "コメントしよう！" %>
-        <%= f.submit "送信する" %>
-      <% end %>
+      <button type="button" class= "btn btn-outline-success" data-toggle="modal" data-target="#modalf1">
+        コメント
+  　　　</button>
+        <div class="modal fade" id="modalf1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= render "comments/form", article: @article %>
+            </div>
+          </div>
+        </div>
     </div>
   <% end %>
   </div>
@@ -36,22 +41,31 @@
     <div class="col-md-8">
       <strong><%= @article.title %></strong>
     </div>
-    <div class="col-md-8">
-      <%= @article.body %>
+    <div class="col-lg-8">
+      <%= simple_format(@article.body) %>
     </div>
     <div class="col-md-4">
       <% if user_signed_in? && @article.user_id == current_user.id %>
-        <%= link_to "編集", edit_article_path(@article) %>
-        <%= link_to "削除", article_path(@article), method: :delete %>
-      <% end %>
+      <button type="button" class= "btn btn-outline-success" data-toggle="modal" data-target="#modalf2">
+        記事編集
+  　　　</button>
+        <div class="modal fade" id="modalf2" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= render "articles/edit", article: @article %>
+            </div>
+          </div>
+        </div>
     </div>
+    <%= link_to "削除", article_path(@article), method: :delete, class: 'btn btn-outline-danger' %>
+    <% end %>
   </div>
   <div class="row mt-5 justify-content-center">
     <h5>コメント一覧</h5>
   </div>
   <div class="row">
     <table class="table">
-      <thead>
+      <thead class="table-warning">
         <tr>
           <th>name</th>
           <th>comment</th>
@@ -60,7 +74,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @article.comments.each do |comment| %>
+      <% @article.comments.order(created_at: :desc).each do |comment| %>
         <tr>
           <td>
             <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  size: "100x100" %><br>

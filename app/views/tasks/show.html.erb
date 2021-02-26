@@ -1,42 +1,50 @@
-<div class="row">
-  <div class="page-header">
-    <h3>スケジュール管理</h3>
+<div class="container">
+  <div class="row mt-3">
+    <div class="page-header">
+      <h3>スケジュール管理</h3>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div id="calendar">
+  <div class="row">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>スケジュール</th>
+          <td><%= @task.title %></td>
+        </tr>
+        <tr>
+          <th>スケジュール内容</th>
+          <td><%= @task.body %></td>
+        </tr>
+        <tr>
+          <th>開始日時</th>
+          <td><%= @task.start_date.strftime('%m.%d %H:%M') %></td>
+        </tr>
+        <tr>
+          <th>終了日時</th>
+          <td><%= @task.end_date.strftime('%m.%d %H:%M') %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <br>
-</div>
-
-<table class="table table-bordered">
-  <tbody>
-    <tr>
-      <th>スケジュール</th>
-      <td><%= @task.title %></td>
-    </tr>
-    <tr>
-      <th>スケジュール内容</th>
-      <td><%= @task.body %></td>
-    </tr>
-    <tr>
-      <th>開始日時</th>
-      <td><%= @task.start_date.strftime('%m.%d %H:%M') %></td>
-    </tr>
-    <tr>
-      <th>終了日時</th>
-      <td><%= @task.end_date.strftime('%m.%d %H:%M') %></td>
-    </tr>
-
-  </tbody>
-</table>
-
-<div class="row">
-  <% if @task.user == current_user %>
-  <div class="pull-right">
-    <%= link_to 'スケジュール登録', new_task_path, class: 'btn btn-success' %>
-    <%= link_to '編集', edit_task_path(id: @task.id, user_id: current_user.id), class: 'btn btn-primary' %>
-    <%= link_to '削除', task_path(id: @task.id, user_id: current_user.id), method: :delete, date: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  <div class="row">
+    <% if @task.user == current_user %>
+    <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaltask2">
+     編集
+    </button>
+    <div class="modal fade" id="modaltask2" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= render "tasks/edit", tasks: @task %>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
+  <%= link_to '削除', task_path(id: @task.id, user_id: current_user.id), method: :delete, date: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger w-25' %>
+   <% end %>
+  <div class="row">
+    <%= link_to 'タスク一覧へ', tasks_path, class: 'btn btn-warning' %>
+  </div>
+  <div class="row">
+    <div id="calendar">
+  </div>
 </div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="col text-center">
+    <h6>コメントする</h6>
+    <%= form_with(model:[@article, @comment], local: true) do |f| %>
+    <div><%= f.text_area :body, placeholder: "コメントしよう！" %></div>
+    <div><%= f.submit "送信する" %></div>
+    <% end %>
+  </div>
+</div>

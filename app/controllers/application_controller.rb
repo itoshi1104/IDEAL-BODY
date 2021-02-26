@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   Refile.secret_key = 'abf37b79024c13ba80364d19dfa2e153b75e4da91d129cc7bf0e0e35fa481eba495d3dd9aad7d4d6aed79c2db88c10d049fee41437f09a6a43c00bd4d62fd4aa'
 
   def set_search
-    # @search = Article.search(params[:q])
-    @search = Article.ransack(params[:q]) # ransackメソッド推奨
+    @search = Article.ransack(params[:q]) 
     @search_articles = @search.result(distinct: true)
   end
 

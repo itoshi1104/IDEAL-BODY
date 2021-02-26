@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
   end
 
   def show
@@ -41,11 +41,6 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_path
   end
-
-  # def search
-  #   # @search = Article.ransack(params[:q])
-  #   # @search_articles = @search.result(distinct: true)
-  # end
 
   private
 

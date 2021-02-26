@@ -1,13 +1,20 @@
-<div class="row">
-  <div class="page-header">
-    <h3>マイカレンダー</h3>
+<div class="container">
+  <div class="row">
+    <div class="page-header mt-3">
+      <h3>タスク一覧</h3>
+    </div>
   </div>
-</div>
-<div class="row">
-  <%= link_to'スケジュール登録', new_task_path, class: 'btn btn-success' %>
-
- <div id="calendar">
-
- </div>
-  <br>
+  <div class="row">
+    <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaltask1">
+      予定登録
+    </button>
+    <div class="modal fade" id="modaltask1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= render "tasks/new", tasks: @task %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="calendar">
 </div>
