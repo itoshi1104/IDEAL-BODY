@@ -15,9 +15,7 @@
     <div class="col-sm-7">
       <% if user_signed_in? && @user.id == current_user.id %>
       <div>
-        <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser1">
-          記事投稿
-    　　　</button>
+        <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser1">記事投稿</button>
         <div class="modal fade" id="modaluser1" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -30,9 +28,7 @@
         <%= link_to "タスク", tasks_path, class: 'btn btn-outline-success w-25' %>
       </div>
       <div>
-        <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser2">
-        　 編集
-  　　  　</button>
+        <button type="button" class= "btn btn-outline-success w-25 text-center" data-toggle="modal" data-target="#modaluser2">編集</button>
         <div class="modal fade" id="modaluser2" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -55,16 +51,18 @@
     <%= simple_format(@user.introduction) %>
   </div>
   <div class="row">
-  <% unless current_user == @user %>
-    <% if current_user.following?(@user) %>
-      <%= form_with(model: current_user.relationships.find_by(follow_id: @user.id),method: :delete) do |f|  %>
-        <%= f.hidden_field :follow_id, value: @user.id %>
-        <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
-      <% end %>
-    <% else %>
-      <%= form_with(model: current_user.relationships.build) do |f| %>
-        <%= f.hidden_field :follow_id, value: @user.id %>
-        <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+  <% if user_signed_in? %>
+    <% unless current_user == @user %>
+      <% if current_user.following?(@user) %>
+        <%= form_with(model: current_user.relationships.find_by(follow_id: @user.id),method: :delete) do |f|  %>
+          <%= f.hidden_field :follow_id, value: @user.id %>
+          <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+        <% end %>
+      <% else %>
+        <%= form_with(model: current_user.relationships.build) do |f| %>
+          <%= f.hidden_field :follow_id, value: @user.id %>
+          <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

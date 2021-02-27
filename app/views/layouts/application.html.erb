@@ -44,19 +44,28 @@
               </li>
             <% else %>
               <li>
-                <%= link_to"Ideal-body!!!", root_path %>
+                <%= link_to"Home", root_path, class: 'nav-link' %>
               </li>
               <li>
-                <%= link_to"news!", articles_path %>
+                <%= link_to"news!", articles_path, class: 'nav-link' %>
               </li>
               <li>
-                <%= render 'layouts/search'%>
+                <button type="button" data-toggle="modal" data-target="#serchModal" style="background: none; border: none;">
+                  <li class="fas fa-search"></li>
+                </button>
+                <div class="modal fade" id="serchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 50px 100px;">
+                      <%= render 'layouts/search', class: 'nav-link'%>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <%= link_to "新規登録", new_user_registration_path %>
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
               </li>
               <li>
-                <%= link_to "ログイン", new_user_session_path %>
+                <%= link_to "ログイン", new_user_session_path,class: 'nav-link' %>
               </li>
               <li></li>
             <% end %>

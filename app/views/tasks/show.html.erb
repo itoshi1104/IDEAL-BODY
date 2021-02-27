@@ -28,9 +28,7 @@
   </div>
   <div class="row">
     <% if @task.user == current_user %>
-    <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaltask2">
-     編集
-    </button>
+    <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaltask2">編集</button>
     <div class="modal fade" id="modaltask2" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -38,8 +36,10 @@
         </div>
       </div>
     </div>
-  </div>
+    <br>
   <%= link_to '削除', task_path(id: @task.id, user_id: current_user.id), method: :delete, date: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger w-25' %>
+  </div>
+  
    <% end %>
   <div class="row">
     <%= link_to 'タスク一覧へ', tasks_path, class: 'btn btn-warning' %>
