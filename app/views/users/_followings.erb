@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="col text-center mt-3">
+    <h5>フォロー</h5>
+  </div>
+  <div class="col text-center">
+    <%  @user.followings.all.each do |user| %>
+    <hr>
+    <%= link_to user.name, user_path(user.id) %>
+    <% end %>
+  </div>
+</div>

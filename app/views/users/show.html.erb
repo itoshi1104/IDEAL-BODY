@@ -40,12 +40,33 @@
       <div>
         <%= link_to "通知", notifications_path, class: 'btn btn-outline-success w-25' %>
       </div>
+      <% if unchecked_notifications.any? %>
+        <i class="fas fa-bell" style="color: gold;"></i>あなたの投稿にリアクションが来てます
+      <% end %>
       <% end %>
     </div>
   </div>
   <div class="row">
-    フォロー<%= @user.followings.count %>
-    フォロワー<%= @user.followers.count %>
+    <button type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#modalfollow1">
+      フォロー<%= @user.followings.count %>人
+    </button>
+    <div class="modal fade" id="modalfollow1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= render "users/followings", users: @user %>
+        </div>
+      </div>
+    </div>
+    <button type="button" class= "btn btn-outline-primary" data-toggle="modal" data-target="#modalfollow2">
+      フォロワー<%= @user.followers.count %>人
+    </button>
+    <div class="modal fade" id="modalfollow2" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= render "users/followers", users: @user %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <%= simple_format(@user.introduction) %>
