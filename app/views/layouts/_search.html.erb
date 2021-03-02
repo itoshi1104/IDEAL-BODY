@@ -2,9 +2,17 @@
 <%= search_form_for @search, url: articles_path do |f| %>
   <div class="row">
     <div class="col text-center">
+      <h4>検索</h4>
+      <hr>
+      <%= f.label :name, "キーワード" %>
       <%= f.text_field :title_cont ,placeholder: '検索するテキストを入力...' %>
+      <br>
+      <%= f.label :性別 %>
+      <%= f.radio_button :user_sex_eq, '', {:checked => true} %>指定なし
+      <%= f.radio_button :user_sex_eq, 0 %>男性
+      <%= f.radio_button :user_sex_eq, 1 %>女性
       <%= f.submit ("検索") , class: 'search-btn' %>
     </div>
 　</div>
 <% end %>
- 
+
