@@ -66,3 +66,4 @@ gem 'rubocop-rails', require: false
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~> 5.13'
 
+
