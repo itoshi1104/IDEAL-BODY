@@ -14,7 +14,7 @@
         <strong><%= @user.sex %></strong>
       </label>
     </div>
-    <div class="col-sm-7">
+    <div class="col-7">
       <% if user_signed_in? && @user.id == current_user.id %>
       <button type="button" class= "btn btn-outline-success w-25" data-toggle="modal" data-target="#modaluser1">
         記事投稿
@@ -111,8 +111,8 @@
         <% @articles.order(created_at: :desc).each do |article| %>
         <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to article.title, article_path(article) %></td>
-        <td>d(￣ ￣)<%= article.favorites.count %></td>
-        <td>💬<%= article.comments.count%></td>
+        <td> <i class="far fa-thumbs-up"></i><%= article.favorites.count %></td>
+        <td><i class="far fa-comment"></i><%= article.comments.count%></td>
       </tr>
       <% end %>
     </tbody>

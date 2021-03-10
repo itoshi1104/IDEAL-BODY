@@ -37,10 +37,10 @@
        　    <%= link_to article.title, article_path(article) %>
        　  </td>
        　  <td>
-       　   <i class="far fa-thumbs-up"></i><%= article.favorites.count %>
+       　 <i class="far fa-thumbs-up"></i><%= article.favorites.count %>
        　  </td>
        　  <td>
-       　    💬<%= article.comments.count %>
+　          <i class="far fa-comment"></i><%= article.comments.count %>
        　  </td>
      　  </tr>
      　  <% end %>
