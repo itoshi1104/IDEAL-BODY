@@ -2,7 +2,7 @@ class Task < ApplicationRecord
   belongs_to :user
   
   validates :title, presence: true,  length: { maximum: 50 }
-  validates :body, presence: true,  length: { maximum: 100 }
+  validates :body, length: { maximum: 100 }
   validate :start_finish_check
   
   def start_finish_check
